@@ -3,8 +3,10 @@ import Header from '../components/header'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToWishlist } from '../redux/slices/wishlistSlice'
+import { addtoCart } from '../redux/slices/cartSlice'
 
 const View = () => {
+  const userCart = useSelector(state=>state.cartReducer)
   const dispatch = useDispatch()
   const userWishlist = useSelector(state=>state.wishlistReducer)
   const [product,setProduct] = useState({})
@@ -30,6 +32,16 @@ const View = () => {
     }
 
   }
+
+  const handleCart = () => {
+    dispatch(addtoCart(product))
+    const existingProduct = userCart?.find(item=>item?.id==id)
+    if(existingProduct){
+      alert("Product quantity is incrementing in your cart!!!")
+    }else{
+      alert("Product added to your cart")
+    }
+  }
   
   
   return (
@@ -52,7 +64,7 @@ const View = () => {
                 </p>
                 <div className='flex justify-between mt-5'>
                   <button onClick={handleWishlist} className='bg-blue-600 rounded text-white p-2'>ADD TO WISHLIST</button>
-                  <button className='bg-green-600 rounded text-white p-2'>ADD TO CART</button>
+                  <button onClick={handleCart} className='bg-green-600 rounded text-white p-2'>ADD TO CART</button>
                 </div>
                 <h3 style={{paddingTop:'50px'}}  className='font-bold mt-5'>Client Reviews</h3>
                 {
