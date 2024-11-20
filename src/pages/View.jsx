@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../components/header'
+import Header from '../components/Header'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToWishlist } from '../redux/slices/wishlistSlice'

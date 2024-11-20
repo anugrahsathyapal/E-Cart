@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../components/header'
+import Header from '../components/Header'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeItem } from '../redux/slices/wishlistSlice'
 import { addtoCart } from '../redux/slices/cartSlice'
